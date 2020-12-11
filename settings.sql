@@ -1,0 +1,3 @@
+CREATE DATABASE goals;
+CREATE USER goalsuser WITH PASSWORD 'goals';
+GRANT ALL PRIVILEGES ON DATABASE goals TO goalsuser;
