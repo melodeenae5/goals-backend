@@ -35,7 +35,7 @@ class List_Item(models.Model):
         'Big_Goal', on_delete=models.CASCADE, null=True, related_name='list_items')
 
 
-class Notes(models.Model):
+class Note(models.Model):
     body = models.TextField()
     day_id = models.ForeignKey(
         'Day', on_delete=models.CASCADE, null=True, related_name='notes')
