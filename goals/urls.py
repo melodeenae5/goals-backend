@@ -1,12 +1,12 @@
 # from django.urls import path, include
 
 from rest_framework.routers import DefaultRouter
-from .views import Big_GoalViewSet, DayViewSet, List_ItemViewSet, NoteViewSet
+from .views import BigGoalViewSet, DayViewSet, ListItemViewSet, NoteViewSet
 
 router = DefaultRouter()
-router.register(r'big_goals', Big_GoalViewSet, basename='big_goal')
+router.register(r'big_goals', BigGoalViewSet, basename='big_goal')
 router.register(r'days', DayViewSet, basename='day')
-router.register(r'list_items', List_ItemViewSet, basename='list_item')
+router.register(r'list_items', ListItemViewSet, basename='list_item')
 router.register(r'notes', NoteViewSet, basename='note')
 urlpatterns = router.urls
 

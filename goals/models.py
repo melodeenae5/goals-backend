@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 
-class Big_Goal(models.Model):
+class BigGoal(models.Model):
     name = models.CharField(max_length=300)
     description = models.TextField()
     timeframe = models.CharField(max_length=25)
@@ -17,18 +17,18 @@ class Day(models.Model):
         'auth.User', related_name='days', on_delete=models.CASCADE)
 
 
-class List_Item(models.Model):
+class ListItem(models.Model):
     day_id = models.ForeignKey(
-        'Day', on_delete=models.CASCADE, null=True, related_name='list_items')
+        Day, on_delete=models.CASCADE, null=True, related_name='list_items')
     body = models.CharField(max_length=150)
     category = models.CharField(max_length=50)
     big_goal_id = models.ForeignKey(
-        'Big_Goal', on_delete=models.CASCADE, null=True, related_name='list_items')
+        BigGoal, on_delete=models.CASCADE, null=True, related_name='list_items')
 
 
 class Note(models.Model):
     body = models.TextField()
     day_id = models.ForeignKey(
-        'Day', on_delete=models.CASCADE, null=True, related_name='notes')
+        Day, on_delete=models.CASCADE, null=True, related_name='notes')
     big_goal_id = models.ForeignKey(
-        'Big_Goal', on_delete=models.CASCADE, null=True, related_name='notes')
+        BigGoal, on_delete=models.CASCADE, null=True, related_name='notes')
