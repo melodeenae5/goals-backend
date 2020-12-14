@@ -8,6 +8,11 @@ django = "*"
 psycopg2-binary = "*"
 djangorestframework = "*"
 six = "*"
+dj-database-url = "*"
+gunicorn = "*"
+djoser = "*"
+django-cors-headers = "*"
+whitenoise = "*"
 
 [dev-packages]
 
