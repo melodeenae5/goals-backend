@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import BigGoal, Day, ListItem, Note
+from django.contrib.auth.models import User
 
 
 class BigGoalSerializer(serializers.ModelSerializer):

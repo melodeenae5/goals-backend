@@ -10,11 +10,17 @@ class BigGoal(models.Model):
     owner = models.ForeignKey(
         'auth.User', related_name='big_goals', on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.name
+
 
 class Day(models.Model):
     date = models.DateField()
     owner = models.ForeignKey(
         'auth.User', related_name='days', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.date)
 
 
 class ListItem(models.Model):
@@ -25,6 +31,9 @@ class ListItem(models.Model):
     big_goal_id = models.ForeignKey(
         BigGoal, on_delete=models.CASCADE, null=True, related_name='list_items')
 
+    def __str__(self):
+        return self.body
+
 
 class Note(models.Model):
     body = models.TextField()
@@ -32,3 +41,6 @@ class Note(models.Model):
         Day, on_delete=models.CASCADE, null=True, related_name='notes')
     big_goal_id = models.ForeignKey(
         BigGoal, on_delete=models.CASCADE, null=True, related_name='notes')
+
+    def __str__(self):
+        return self.body
