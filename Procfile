@@ -1,0 +1,1 @@
+web: gunicorn goals_django.wsgi
