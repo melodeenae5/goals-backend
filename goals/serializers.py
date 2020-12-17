@@ -4,9 +4,12 @@ from django.contrib.auth.models import User
 
 
 class BigGoalSerializer(serializers.ModelSerializer):
+    owner_name = serializers.ReadOnlyField(source='user.username')
+
     class Meta:
         model = BigGoal
-        fields = ('id', 'name', 'description', 'timeframe', 'owner')
+        fields = ('id', 'name', 'description', 'timeframe', 'owner_name')
+        # read_only_fields = ['owner']
 
 
 class DaySerializer(serializers.ModelSerializer):
@@ -18,7 +21,8 @@ class DaySerializer(serializers.ModelSerializer):
 class ListItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = ListItem
-        fields = ('id', 'day_id', 'body', 'category', 'big_goal_id')
+        fields = ('id', 'day_id', 'body', 'category',
+                  'big_goal_id', 'isComplete')
 
 
 class NoteSerializer(serializers.ModelSerializer):

@@ -25,11 +25,12 @@ class Day(models.Model):
 
 class ListItem(models.Model):
     day_id = models.ForeignKey(
-        Day, on_delete=models.CASCADE, null=True, related_name='list_items')
+        Day, on_delete=models.CASCADE, null=True, related_name='day_list_items')
     body = models.CharField(max_length=150)
     category = models.CharField(max_length=50)
     big_goal_id = models.ForeignKey(
-        BigGoal, on_delete=models.CASCADE, null=True, related_name='list_items')
+        BigGoal, on_delete=models.CASCADE, null=True, related_name='goal_list_items')
+    isComplete = models.BooleanField(default=False)
 
     def __str__(self):
         return self.body

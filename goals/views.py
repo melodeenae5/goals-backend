@@ -7,8 +7,14 @@ from .serializers import BigGoalSerializer, DaySerializer, ListItemSerializer, N
 
 
 class BigGoalViewSet(viewsets.ModelViewSet):
-    queryset = BigGoal.objects.all()
+    # queryset = BigGoal.objects.all()
     serializer_class = BigGoalSerializer
+
+    def get_queryset(self, *args, **kwargs):
+        return BigGoal.objects.all().filter(owner=self.request.user)
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
 
 
 class DayViewSet(viewsets.ModelViewSet):
